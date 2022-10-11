@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dots</title>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;align-items: center;justify-content: center;
+            gap: 2em;
+            flex-direction: column;
+            background-color: rgb(36, 36, 119);
+        }
+
+        .preloader {
+            width: 40px;
+            height: 30px;
+            /* background-color: black; */
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+        }
+
+        .preloader .dot {
+            width: 10px;
+            aspect-ratio: 1/1;
+            background-color: white;
+            border-radius: 50%;
+            animation-duration: 0.5s;
+            animation-timing-function: ease;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse;
+            animation-delay: calc(var(--order) * 200ms)
+        }
+
+        .preloader.one .dot {
+            animation-name: jumping;
+        }
+
+        .preloader.two .dot {
+            animation-name: fading;
+        }
+
+        /* .dot:nth-child(2) {
+            animation-delay: 300ms;
+        } */
+
+        @keyframes jumping {
+            0% {
+                transform: translateY(-8px);
+            }
+        }
+
+        @keyframes fading {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="preloader one">
+        <div class="dot" style="--order: 1"></div>
+        <div class="dot" style="--order: 2"></div>
+        <div class="dot" style="--order: 3"></div>
+    </div>
+
+    <div class="preloader two">
+        <div class="dot" style="--order: 1"></div>
+        <div class="dot" style="--order: 2"></div>
+        <div class="dot" style="--order: 3"></div>
+    </div>
+</body>
+</html>
